@@ -2,6 +2,8 @@
 
 This repo is focused on benchmarking the performance of the [Cloudflare's `mmap-sync` library](https://github.com/cloudflare/mmap-sync) in the context of high-frequency trading systems. The original benchmark provided by cloudflare only focuses on passing a single `bool` value (one byte) to multiple readers, which does not accurately portray how this library would be used in a real-world scenario. In this benchmark, I will be using a more realistic scenario where the writer is sending a struct representing a `BestBidAsk` object (192 bytes) to 12 different readers with different polling intervals.
 
+Skip to the [conclusion](#conclusion) if you are only interested in the results of the benchmark.
+
 The test included in this benchmark are:
 
 **Control Experiments:**
