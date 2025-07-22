@@ -1,0 +1,1 @@
+{"group_id":"mmap_sync_write_to_many_readers","function_id":"write_with_concurrent_readers","value_str":"12","throughput":{"Elements":1},"full_id":"mmap_sync_write_to_many_readers/write_with_concurrent_readers/12","directory_name":"mmap_sync_write_to_many_readers/write_with_concurrent_readers/12","title":"mmap_sync_write_to_many_readers/write_with_concurrent_readers/12"}

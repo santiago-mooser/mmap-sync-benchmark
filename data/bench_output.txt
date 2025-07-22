@@ -1,0 +1,132 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+control_thread_coordination/coordination_overhead
+                        time:   [55.293 µs 55.335 µs 55.375 µs]
+                        thrpt:  [18.059 Kelem/s 18.072 Kelem/s 18.086 Kelem/s]
+                 change:
+                        time:   [-0.1183% -0.0212% +0.0781%] (p = 0.67 > 0.05)
+                        thrpt:  [-0.0781% +0.0212% +0.1185%]
+                        No change in performance detected.
+Found 57 outliers among 5000 measurements (1.14%)
+  28 (0.56%) low severe
+  29 (0.58%) low mild
+
+control_empty_operations/empty_write
+                        time:   [6.6377 ms 6.6748 ms 6.7129 ms]
+                        thrpt:  [148.97  elem/s 149.82  elem/s 150.66  elem/s]
+                 change:
+                        time:   [+1.5302% +2.2985% +3.0481%] (p = 0.00 < 0.05)
+                        thrpt:  [-2.9579% -2.2468% -1.5072%]
+                        Performance has regressed.
+Found 1009 outliers among 5000 measurements (20.18%)
+  4 (0.08%) low mild
+  64 (1.28%) high mild
+  941 (18.82%) high severe
+control_empty_operations/empty_read
+                        time:   [117.27 ns 117.36 ns 117.47 ns]
+                        thrpt:  [8.5131 Melem/s 8.5205 Melem/s 8.5275 Melem/s]
+                 change:
+                        time:   [-3.1061% +2.0262% +7.0027%] (p = 0.48 > 0.05)
+                        thrpt:  [-6.5444% -1.9860% +3.2057%]
+                        No change in performance detected.
+Found 542 outliers among 5000 measurements (10.84%)
+  186 (3.72%) high mild
+  356 (7.12%) high severe
+
+control_write_scaling/write_latency/1
+                        time:   [6.7010 ms 6.7428 ms 6.7850 ms]
+                        thrpt:  [147.38  elem/s 148.31  elem/s 149.23  elem/s]
+                 change:
+                        time:   [+2.3809% +3.1936% +4.0470%] (p = 0.00 < 0.05)
+                        thrpt:  [-3.8896% -3.0948% -2.3255%]
+                        Performance has regressed.
+Found 1046 outliers among 5000 measurements (20.92%)
+  1 (0.02%) low mild
+  53 (1.06%) high mild
+  992 (19.84%) high severe
+control_write_scaling/write_latency/3
+                        time:   [6.3853 ms 6.4150 ms 6.4456 ms]
+                        thrpt:  [155.14  elem/s 155.88  elem/s 156.61  elem/s]
+                 change:
+                        time:   [-4.7523% -4.0539% -3.3542%] (p = 0.00 < 0.05)
+                        thrpt:  [+3.4706% +4.2252% +4.9894%]
+                        Performance has improved.
+Found 680 outliers among 5000 measurements (13.60%)
+  5 (0.10%) low mild
+  78 (1.56%) high mild
+  597 (11.94%) high severe
+control_write_scaling/write_latency/6
+                        time:   [6.4880 ms 6.5215 ms 6.5555 ms]
+                        thrpt:  [152.54  elem/s 153.34  elem/s 154.13  elem/s]
+                 change:
+                        time:   [-0.8227% -0.0955% +0.6420%] (p = 0.80 > 0.05)
+                        thrpt:  [-0.6379% +0.0956% +0.8295%]
+                        No change in performance detected.
+Found 798 outliers among 5000 measurements (15.96%)
+  3 (0.06%) low mild
+  59 (1.18%) high mild
+  736 (14.72%) high severe
+control_write_scaling/write_latency/9
+                        time:   [6.5609 ms 6.5945 ms 6.6290 ms]
+                        thrpt:  [150.85  elem/s 151.64  elem/s 152.42  elem/s]
+                 change:
+                        time:   [+0.1958% +0.9213% +1.6733%] (p = 0.01 < 0.05)
+                        thrpt:  [-1.6458% -0.9129% -0.1955%]
+                        Change within noise threshold.
+Found 874 outliers among 5000 measurements (17.48%)
+  1 (0.02%) low mild
+  58 (1.16%) high mild
+  815 (16.30%) high severe
+control_write_scaling/write_latency/12
+                        time:   [6.9417 ms 6.9833 ms 7.0255 ms]
+                        thrpt:  [142.34  elem/s 143.20  elem/s 144.06  elem/s]
+                 change:
+                        time:   [-0.7692% +0.0605% +0.9674%] (p = 0.88 > 0.05)
+                        thrpt:  [-0.9581% -0.0605% +0.7752%]
+                        No change in performance detected.
+Found 890 outliers among 5000 measurements (17.80%)
+  484 (9.68%) high mild
+  406 (8.12%) high severe
+
+control_memory_baseline/memory_copy
+                        time:   [143.56 ns 143.57 ns 143.59 ns]
+                        thrpt:  [6.9644 Melem/s 6.9650 Melem/s 6.9657 Melem/s]
+                 change:
+                        time:   [+4.2681% +4.4983% +4.7099%] (p = 0.00 < 0.05)
+                        thrpt:  [-4.4981% -4.3046% -4.0934%]
+                        Performance has regressed.
+Found 607 outliers among 5000 measurements (12.14%)
+  397 (7.94%) low severe
+  194 (3.88%) low mild
+  2 (0.04%) high mild
+  14 (0.28%) high severe
+
+write_to_many_readers/multi_run_write/12
+                        time:   [6.4884 ms 6.5141 ms 6.5406 ms]
+                        thrpt:  [152.89  elem/s 153.51  elem/s 154.12  elem/s]
+                 change:
+                        time:   [-5.4339% -4.8107% -4.1594%] (p = 0.00 < 0.05)
+                        thrpt:  [+4.3399% +5.0538% +5.7461%]
+                        Performance has improved.
+Found 531 outliers among 5000 measurements (10.62%)
+  108 (2.16%) high mild
+  423 (8.46%) high severe
+
+read_from_one_writer/multi_run_read
+                        time:   [15.536 ms 19.115 ms 22.974 ms]
+                        thrpt:  [43.528  elem/s 52.315  elem/s 64.366  elem/s]
+                 change:
+                        time:   [-7.7090% +22.634% +61.082%] (p = 0.14 > 0.05)
+                        thrpt:  [-37.920% -18.456% +8.3529%]
+                        No change in performance detected.
+Found 1151 outliers among 5000 measurements (23.02%)
+  9 (0.18%) high mild
+  1142 (22.84%) high severe

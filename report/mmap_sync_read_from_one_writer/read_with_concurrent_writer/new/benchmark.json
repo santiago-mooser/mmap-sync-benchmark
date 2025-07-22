@@ -1,0 +1,1 @@
+{"group_id":"mmap_sync_read_from_one_writer","function_id":"read_with_concurrent_writer","value_str":null,"throughput":{"Elements":1},"full_id":"mmap_sync_read_from_one_writer/read_with_concurrent_writer","directory_name":"mmap_sync_read_from_one_writer/read_with_concurrent_writer","title":"mmap_sync_read_from_one_writer/read_with_concurrent_writer"}
