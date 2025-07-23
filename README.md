@@ -168,7 +168,7 @@ Found 132 outliers among 5000 measurements (2.64%)
 
 <p float="left">
   <img alt="Write Latency" src="./report/mmap_sync_read_from_one_writer/read_with_concurrent_writer/report/iteration_times.svg"  width="960" />
-  <img alt="Write Latency PDF" src="./report/mmap_sync_read_from_one_writer/read_with_concurrent_writer/report/pdf.svg"  width="960" />
+  <img alt="Write Latency PDF" src="./report/mmap_sync_read_from_one_writer/read_with_concurrent_writer/report/pdf.svg"  width="960" fill="white"/>
 </p>
 
 ## Write latency
@@ -212,6 +212,8 @@ The control experiments establish that the write latency spikes are genuine char
 
 # Conclusion
 
-The comprehensive benchmarking analysis, provides high confidence in the performance assessment of the `mmap-sync` library for high-frequency trading applications. This aligns with industry knowledge, where other types of Inter-process Communication (IPC) mechanisms like shared memory (e.g. ring queues) are typically preferred for their lower latencies.
+In conclusion, while the benchmarking results indicate that `mmap-sync` can handle multiple readers and writers, it suffers from significant latency spikes during write operations. The read latencies are relatively stable and consistent, but the write latencies exhibit large and unpredictable spikes that can reach up to 14ms. This is consistent with the characteristics of the Inter-process Communication (IPC) mechanism used by `mmap-sync`, which relies on memory-mapped files and synchronization primitives, since they are know to have issues in workloads that require multiple concurrent readers and writers[1](blog.devgenius.io/why-memory-mapped-files-arent-as-good-as-you-think-they-are-49dadade221a).
+
+Because of this, `mmap-sync` is not suitable for high-frequency trading applications that require consistent, low-latency performance due to the observed latency spikes and overall performance characteristics. This aligns with industry knowledge, where other types of Inter-process Communication (IPC) mechanisms like shared memory (e.g. ring queues) are typically preferred for their lower latencies.
 
 If you are interested in the report (which contains additional statistics about the benchmark), you can find it in the `report` directory. Additionally, the raw benchmark data can be found in the `data` directory.
