@@ -1,11 +1,10 @@
-use benchmark_utils::{BenchmarkThreadPool, MultiRunManager};
+use benchmark_utils::{BenchmarkThreadPool};
 use criterion::{BenchmarkId, Criterion, Throughput, criterion_group, criterion_main};
 use mmap_benchmark::{BestBidAsk, MmapBenchmark, MmapWorker, benchmark_utils};
 use std::time::Duration;
 
 const NUM_READERS: usize = 12;
-const SAMPLE_SIZE: usize = 5000; // Reduced for multiple runs
-const NUM_RUNS: usize = 5; // Multiple runs for statistical analysis
+const SAMPLE_SIZE: usize = 5000;
 
 // Reader frequency configurations (750Hz to 10kHz range)
 const READER_FREQUENCIES: &[f64] = &[750.0, 1500.0, 2500.0, 5000.0, 10000.0]; // Hz
@@ -25,6 +24,7 @@ fn benchmark_thread_coordination_overhead(c: &mut Criterion) {
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
     group.warm_up_time(Duration::from_secs(5));
+    group.measurement_time(Duration::from_secs(35));
 
     group.bench_function("coordination_overhead", |b| {
         b.iter_custom(|iters| {
@@ -52,6 +52,7 @@ fn benchmark_empty_operations(c: &mut Criterion) {
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
     group.warm_up_time(Duration::from_secs(5));
+    group.measurement_time(Duration::from_secs(35));
 
     let benchmark = MmapBenchmark::new().expect("Failed to create benchmark");
     let test_data = BestBidAsk::generate_test_data(100);
@@ -98,6 +99,7 @@ fn benchmark_write_scaling(c: &mut Criterion) {
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
     group.warm_up_time(Duration::from_secs(10));
+    group.measurement_time(Duration::from_secs(35));
 
     let benchmark = MmapBenchmark::new().expect("Failed to create benchmark");
     let test_data = BestBidAsk::generate_test_data(100);
@@ -151,6 +153,7 @@ fn benchmark_write_to_many_readers(c: &mut Criterion) {
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
     group.warm_up_time(Duration::from_secs(10));
+    group.measurement_time(Duration::from_secs(35));
 
     let benchmark = MmapBenchmark::new().expect("Failed to create benchmark");
     let test_data = BestBidAsk::generate_test_data(1000);
@@ -197,6 +200,7 @@ fn benchmark_read_from_one_writer(c: &mut Criterion) {
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
     group.warm_up_time(Duration::from_secs(10));
+    group.measurement_time(Duration::from_secs(35));
 
     let benchmark = MmapBenchmark::new().expect("Failed to create benchmark");
     let test_data = BestBidAsk::generate_test_data(1000);
@@ -264,6 +268,8 @@ fn benchmark_memory_baseline(c: &mut Criterion) {
     let mut group = c.benchmark_group("control_memory_baseline");
     group.throughput(Throughput::Elements(1));
     group.sample_size(SAMPLE_SIZE);
+    group.warm_up_time(Duration::from_secs(10));
+    group.measurement_time(Duration::from_secs(35));
 
     // Generate test data
     let source_data = BestBidAsk::generate_test_data(100);

@@ -510,41 +510,6 @@ pub mod benchmark_utils {
         }
     }
 
-    /// Multi-run benchmark manager
-    pub struct MultiRunManager {
-        pub num_runs: usize,
-        pub samples_per_run: usize,
-        pub statistics: BenchmarkStatistics,
-    }
-
-    impl MultiRunManager {
-        pub fn new(num_runs: usize, samples_per_run: usize) -> Self {
-            Self {
-                num_runs,
-                samples_per_run,
-                statistics: BenchmarkStatistics::new(),
-            }
-        }
-
-        pub fn execute_write_benchmark<F>(&mut self, mut benchmark_fn: F) -> Result<(), Box<dyn std::error::Error>>
-        where
-            F: FnMut() -> Result<Duration, Box<dyn std::error::Error>>,
-        {
-            for run in 0..self.num_runs {
-                println!("Executing run {}/{}", run + 1, self.num_runs);
-                let mut run_measurements = Vec::with_capacity(self.samples_per_run);
-
-                for _ in 0..self.samples_per_run {
-                    let duration = benchmark_fn()?;
-                    run_measurements.push(duration);
-                }
-
-                self.statistics.add_run(run_measurements);
-            }
-            Ok(())
-        }
-    }
-
     // Reader frequency configurations (same as before)
     const READER_STD_DEV_RATIO: f64 = 0.15;
 
